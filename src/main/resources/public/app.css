@@ -1,0 +1,15 @@
+h1, #guessedLetters {
+  text-align: center;
+}
+
+body {
+  background-color: lavender;
+}
+
+img {
+  padding: 2rem;
+}
+
+.form-control {
+  width: 30%;
+}

@@ -1,6 +1,6 @@
 #if($gameEndMsg == "")
   <h2>You have $numGuesses guesses remaining to SAVE THIS RANDO'S LIFE!</h2>
-  <h2>Here is what you know of the word:</h2>
+  <h3>Here is what you know of the word:</h3>
   <h1>
     #foreach ($letter in $hangmanWord)
       #if($letter != " ")
@@ -11,13 +11,13 @@
     #end
   </h1>
   #if($alreadyGuessed)
-    <h2>Here is what you have guessed already:</h2>
+    <h3>Here is what you have guessed already:</h3>
     <h2>
       #foreach($letter in $alreadyGuessed)
       $letter,
       #end
     </h2>
-  <h2>
+  <h2 id="guessedLetters">
     #if($guessMsg == "yes")
       Congratulations! You are one step closer to saving this rando!
     #elseif($guessMsg == "no")
