@@ -1,18 +1,46 @@
-<h2>You have $numGuesses guesses remaining to SAVE THIS RANDO'S LIFE!</h2>
-<h2>Here is what you know of the word:</h2>
-<h1>$hangmanWord</h1>
-<h2>Here is what you have guessed already:</h2>
-<h2>$alreadyGuessed</h2>
-<h2>$guessMsg</h2>
-<form action="/hangman">
-  <div class="form-group">
-    <label for="guessInput">Whatchu wanna guess:</label>
-    <input id="guessInput" name="guessInput" class="form-control" type="text" maxlength="1" required>
-  </div>
-  <button type="submit" class="btn">Guess</button>
-</form>
-<p>$hangmanImg</p>
-<h2>$gameEndMsg</h2>
+#if($gameEndMsg == "")
+  <h2>You have $numGuesses guesses remaining to SAVE THIS RANDO'S LIFE!</h2>
+  <h2>Here is what you know of the word:</h2>
+  <h1>
+    #foreach ($letter in $hangmanWord)
+      #if($letter != " ")
+        <span>$letter </span>
+      #else
+        <br>
+      #end
+    #end
+  </h1>
+  #if($alreadyGuessed)
+    <h2>Here is what you have guessed already:</h2>
+    <h2>
+      #foreach($letter in $alreadyGuessed)
+      $letter,
+      #end
+    </h2>
+  <h2>
+    #if($guessMsg == "yes")
+      Congratulations! You are one step closer to saving this rando!
+    #elseif($guessMsg == "no")
+      WHAT?!?!?!?!?!outrage? Why did you guess that? Everyone knows that no word ever has contained that letter! GOD.
+    #else
+      You already guessed that. Go home. Reevaluate all of the life-choices that led you to this point.
+    #end
+  </h2>
+  #end
+  <form action="/hangman" method="post">
+    <div class="form-group">
+      <label for="guessInput">Whatchu wanna guess:</label>
+      <input id="guessInput" name="guessInput" class="form-control" type="text" maxlength="1" required>
+    </div>
+    <button type="submit" class="btn btn-success">Guess</button>
+  </form>
+#end
+<div>$hangmanImg</div>
+#if($gameEndMsg == "win")
+  <h2>Congratulations! You successfully guessed that the answer is <strong>$hangman.getAnswer()</strong>. That must have been SOOOOOO hard. You are SOOOO smart and special. I guess the rando lives too. FOR NOW.</h2>
+#elseif($gameEndMsg == "lose")
+  <h2>Oh nos! The rando is ded! You killed him. All you. No other factors were responsible for his death. You. The answer was <strong>$hangman.getAnswer()</strong> by the way. A child could have guessed that.</h2>
+#end
 <form action="/">
-    <button class="btn btn-danger" type="submit">Start Over</button>
+    <button class="btn btn-danger center-block" type="submit">Start Over</button>
 </form>
