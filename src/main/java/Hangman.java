@@ -18,7 +18,7 @@ public class Hangman{
   String[] mAnswerPool_Prepositions = {"upon the", "excepting the", "save the", "within the", "via the"};
   private String[] mProgress;
   private int mGameEndCounter;
-  public final int mMAX_COUNTER = 6;
+  public final int mMAX_COUNTER = 7;
   private List<String> mAlreadyGuessed= new ArrayList<String>();
 
 

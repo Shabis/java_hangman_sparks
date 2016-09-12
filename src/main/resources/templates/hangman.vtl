@@ -1,0 +1,18 @@
+<h2>You have $numGuesses guesses remaining to SAVE THIS RANDO'S LIFE!</h2>
+<h2>Here is what you know of the word:</h2>
+<h1>$hangmanWord</h1>
+<h2>Here is what you have guessed already:</h2>
+<h2>$alreadyGuessed</h2>
+<h2>$guessMsg</h2>
+<form action="/hangman">
+  <div class="form-group">
+    <label for="guessInput">Whatchu wanna guess:</label>
+    <input id="guessInput" name="guessInput" class="form-control" type="text" maxlength="1" required>
+  </div>
+  <button type="submit" class="btn">Guess</button>
+</form>
+<p>$hangmanImg</p>
+<h2>$gameEndMsg</h2>
+<form action="/">
+    <button class="btn btn-danger" type="submit">Start Over</button>
+</form>
